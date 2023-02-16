@@ -1,0 +1,77 @@
+<html>
+
+<head>
+    
+    
+    <script src="telephone/telephone.js" type="text/javascript"></script>
+
+    <script src="custom_select/custom_select.js" type="text/javascript"></script>
+    <link href="custom_select/custom_select.css" type="text/css" rel="stylesheet" media="screen">
+
+
+    <script>
+        window.addEventListener('load' , function(){
+            
+            //форматирование поля согласну шаблону номера телефона
+            telephone_format( telephone || input-telephone , '+7 ___ ___-__-__' , '_');// элемент <input type="text"/> , шаблон номера телефона , символ из шаблона соответсвующий цифре
+
+
+            //Поиск по select
+            function set_option(){
+                console.log( 'Выбрана опция со значением ' + this.value );
+            }
+
+            custom_select_generator({
+                element: custom_select,
+                change: set_option,
+                placeholder: 'Выберите опцию',
+                arrow: true
+            });
+
+        })
+        
+    </script>
+</head>
+<body>
+
+
+    <div style="margin: 20px auto;max-width: 1000px;font-family:'Courier New';">
+        <h2>Форматирование поля по шаблону номера телефона</h2>
+        <p><font face="Courier New"><span style="font-size: medium;"><b>Пример вызова функции:</b></span></font></p><p><font face="Courier New"><span style="font-size: medium;">&nbsp;telephone_format( <br>&nbsp; &nbsp;telephone , //&nbsp;</span></font><span style="font-family: &quot;Courier New&quot;; font-size: medium;">элемент &lt;input type="text"/&gt;&nbsp;</span><font face="Courier New"><span style="font-size: medium;"><br></span></font>&nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: medium; font-family: &quot;Courier New&quot;;">'+7 ___ ___-__-__' , //&nbsp;</span><span style="font-family: &quot;Courier New&quot;; font-size: medium;">шаблон номера телефона</span><span style="font-size: medium; font-family: &quot;Courier New&quot;;"><br>&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: medium; font-family: &quot;Courier New&quot;;">'_'</span>&nbsp; &nbsp; //&nbsp;<span style="font-family: &quot;Courier New&quot;; font-size: medium;">символ из шаблона соответствующий цифре</span><span style="font-size: medium; font-family: &quot;Courier New&quot;;"><br>&nbsp; )&nbsp;</span><span style="font-family: &quot;Courier New&quot;; font-size: medium;">&nbsp;</span></p>
+        <p><b>Без скрипта</b>:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" value="+7 901 270-30-13"><br></p><p><b><br></b></p>
+        <p><b>Скрипт работает:</b>&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="telephone" value="+7 901 270-30-13"><br></p>
+    </div>
+
+    <div style="margin: 120px auto 0px;max-width: 1000px;font-family:'Courier New';">
+        <h2>Поиск в поле SELECT</h2>
+        <p><font face="Courier New"><b>Исходный код целевого элемента select:</b></font></p>
+        <p><select>
+            <option value="0" selected="selected">Пермь</option>
+            <option value="1">Москва</option>
+            <option value="2">Еатеринбург</option>
+            <option value="3">Санкт-петербург</option>
+            <option value="4">Тверь</option>
+            <option value="5">Тюмень</option>
+            <option value="4">Владивосток</option>
+            <option value="4">Иркутск</option>
+        </select></p>
+        <p><span style="font-family: &quot;Courier New&quot;;">&nbsp;&nbsp;&nbsp;data-value="0", data-label="Пермь" - атрибуты элемента select, которые указывает на опцию со значением value выбранной по умолчанию.</span><font face="Courier New"><br></font></p><p><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&lt;select name="" data-value="0" data-label="Пермь"&gt;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="0"&gt;Пермь&lt;/option&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="1"&gt;Москва&lt;/option&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;</font></p><p><b>Пример вызова функции:<font face="Courier New"><br></font></b></p><div style="line-height: 19px;"><div><font face="Courier New">&nbsp;&nbsp;&nbsp;custom_select_generator({</font></div><div><font face="Courier New">&nbsp; &nbsp; &nbsp;&nbsp;element:&nbsp;custom_select, // целевой элемент select</font></div><div><font face="Courier New">&nbsp; &nbsp; &nbsp;&nbsp;change:&nbsp;set_option, // функция, которая будет вызвана при выборе опции из сгенерированного списка&nbsp;</font></div><div><font face="Courier New">&nbsp; &nbsp; &nbsp;&nbsp;placeholder:&nbsp;'Выберите опцию', // текст, в placeholder видимого элемента input</font></div><div><font face="Courier New">&nbsp; &nbsp; &nbsp;&nbsp;arrow:&nbsp;true // будет ли стрелка для открытия списка опций</font></div><div><font face="Courier New">&nbsp; &nbsp;});</font></div><div><font face="Courier New"><br></font></div></div><p><font face="Courier New"><b>Сгенерированный код скриптом:</b></font></p>
+        <p><select id="custom_select" data-value="0" data-label="Пермь">
+            <option value="0" selected="selected">Пермь</option>
+            <option value="1">Москва</option>
+            <option value="2">Еатеринбург</option>
+            <option value="3">Санкт-петербург</option>
+            <option value="4">Тверь</option>
+            <option value="5">Тюмень</option>
+            <option value="4">Владивосток</option>
+            <option value="4">Иркутск</option>
+            </select>
+        </p>
+        <p>&nbsp; &nbsp;&nbsp;<span style="font-family: &quot;Courier New&quot;;">&nbsp; Скрытое поле input с именем(name) элемента select и value, принимает value элемента из сгенерированного списка при его выборе.</span></p><p><font face="Courier New">&nbsp; &nbsp; Видимое поле input примет значение самого тэга option в качестве атрибута value.<br></font></p>
+        <p><font face="Courier New">&nbsp; &nbsp; &lt;div class="custom_input_box"&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="hidden" name="имя поля select" autocomplete="off" value="значение data-value элемента select или выбранное в сгенерированном списке опций"&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="custom_input_text_box "&gt;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input name="имя поля select + '_'" type="text" autocomplete="off" placeholder="Переданное в функцию" value="значение data-label элемента select"&gt;&lt;div class="custom_input_text_arrow"&gt;&lt;/div&gt;</font></p><p><font face="Courier New">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="custom_select_list_box"&gt;<br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="custom_select_list" style=""&gt;<br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;Пермь&lt;/div&gt;<br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;другие опции элемента select&lt;/div&gt;<br>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp; &nbsp;&nbsp;&nbsp;&lt;/div&gt;</font></p>
+    
+    </div>
+    
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+#close_map{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    padding: 8px 0;
+    box-shadow: 0px 0px 4px #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#close_map:before{
+    content: "\2718	";
+    padding:10px;
+    line-height: 1;
+}
+
+.choose_pvz {
+    float:left;
+    display: inline-block;
+    padding: 5px;
+    background-color: #0ed567;
+    cursor: pointer;
+    color: #fff;
+}
+
+.choose_pvz:hover {
+    background-color: #44ed90;
+}
+
+select#delivery_pvz_map_city{
+    display:none;
+}
+
+#delivery_pvz_map{
+    position: relative;
+}
+
+#delivery_pvz_map_cities{
+    position:absolute;
+    top:15px;
+    left: 60px;
+    z-index: 100;
+}
+
+.custom_input_box{
+    display: inline-block;
+    /*box-shadow: 0px 0px 4px #ccc;*/
+}
+
+.custom_input_text_box{
+    position: relative;
+    display: inline-block;
+}
+
+.custom_input_text_box input{
+    margin: 0 !important;
+    padding: 7px 12px;
+    width: 250px;
+}
+
+.custom_input_text{
+    padding: 8px;
+    border: 1px solid #d5d5d5;
+    /*width: 250px;*/
+}
+
+.custom_input_text_arrow{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom_input_text_arrow:before{
+    content: "\2BC6";
+    line-height: 2;
+}
+
+.custom_select_list_box{
+    position: relative;
+}
+
+.custom_select_list{
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    z-index: 2;
+    width: 100%;
+    box-shadow: 2px 2px 8px #ccc;
+}
+
+.custom_select_list > div{
+    cursor: pointer;
+    padding: 10px 6px;
+}
+
+.custom_select_list > div:hover{
+    background-color: #f3f3f3;
+}
+
+
+/* */
+
+#courier_method .custom_input_box, #courier_method .custom_input_text_box , #courier_method input .custom_input_box input{
+    display: block;
+}
+
+#courier_method .custom_input_box input {
+    width: 100% !important;
+}
+
+#delivery_pvz_map_cities .custom_input_box input {
+    width: 250px !important;
+}
+
+
+
