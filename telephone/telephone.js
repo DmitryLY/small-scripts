@@ -58,11 +58,11 @@ function telephone_format( telephone , mask , mask_num){
 
         [].splice.apply( numbers , [ start_num , end_num - start_num + 1 || 1 , ].concat( Array( end_num - start_num + 1 || 1 ).fill(undefined) ) );
 
-        ( e.key?.match(/\d+/) && start_num !== undefined && ( numbers[start_num] = e.key ) );
+        ( e.key.match(/\d+/) && start_num !== undefined && ( numbers[start_num] = e.key ) );
          
         render();
 
-        for( var selection_pos = 0, j = 0 , next_num = ( e.keyCode == 8 || ( !e.key?.match(/\d+/) && start_num != end_num ) ? start_num : start_num + 1); selection_pos < mask.length ; selection_pos++ ){
+        for( var selection_pos = 0, j = 0 , next_num = ( e.keyCode == 8 || ( !e.key.match(/\d+/) && start_num != end_num ) ? start_num : start_num + 1); selection_pos < mask.length ; selection_pos++ ){
             if( mask[selection_pos] != mask_num ) continue;
             if( j === next_num ) break;
             j++;
